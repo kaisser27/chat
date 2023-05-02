@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+</head>
+<body>
+<h1 th:text="${chat.name}">chatName</h1>
+<table th:each="message : ${chat.messages}">
+<!--    <th:block th:each="message : ${chat.messages}">-->
+        <tr>
+            <td th:text="${message.nameOfSender}">...</td>
+            <td th:text="${message.text}">...</td>
+        </tr>
+<!--    </th:block>-->
+</table>
+<div>
+    <form action="#" th:action="@{/chat/{chatId}/addMessage(chatId = ${chat.id})}" th:object="${message}" method="post">
+        <p>Message: <input type="text" th:field="*{text}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</div>
+</body>
+</html>

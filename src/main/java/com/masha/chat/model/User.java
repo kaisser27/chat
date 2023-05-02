@@ -1,5 +1,6 @@
 package com.masha.chat.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,10 +12,11 @@ import java.util.List;
 
 @Getter
 @Setter
-//toDO add entity JPA
+@Entity(name = "users")
 public class User implements UserDetails {
 
-    //add id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String login;
@@ -24,6 +26,9 @@ public class User implements UserDetails {
     private String password;
 
     private String role = "ROLE_ADMIN";
+
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Chat> chats;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

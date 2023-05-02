@@ -1,12 +1,25 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-  <title>Greeting</title>
+    <title>Greeting</title>
 </head>
 <body>
-<h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+<h1 th:text="${user.name}">UserName</h1>
 <form th:action="@{/logout}" method="post">
-  <input type="submit" value="Sign Out"/>
+    <input type="submit" value="Sign Out"/>
 </form>
+<div>
+    <form action="#" th:action="@{/user}" th:object="${user}" method="post">
+        <p>Nmae: <input type="text" th:field="*{name}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</div>
+
+<div th:each="chat: ${user.chats}">
+    <li> <a th:href="@{/chat/{id}(id = ${chat.id})}">
+        <span th:text="${chat.name}"></span>
+    </a></li>
+</div>
 </body>
 </html>
