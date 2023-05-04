@@ -17,4 +17,6 @@ public interface ChatService {
     Chat getChat(Long id);
 
     List<Chat> getAllChats();
+
+    Chat deleteMessage(Long messageId);
 }

@@ -23,4 +23,10 @@ public class Message {
 
     @Column(name = "sending_time")
     private LocalDateTime sendingTime;
+
+    @Column(name = "is_hidden")
+    private Boolean isHidden;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Chat chat;
 }
