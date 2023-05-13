@@ -44,11 +44,6 @@
         </tbody>
     </table>
     <div>
-<!--        <form action="#" th:action="@{/chat/{chatId}/addMessage(chatId = ${chat.id})}" th:object="${message}"-->
-<!--              method="post">-->
-<!--            <p>Message: <input type="text" th:field="*{text}"/></p>-->
-<!--            <p><input type="submit" value="Add message"/></p>-->
-<!--        </form>-->
         <form action="#" th:action="@{/chat/{chatId}/addMessage(chatId = ${chat.id})}" th:object="${message}" method="post">
             <div class="input-group flex-nowrap">
                 <input type="text" class="form-control" placeholder="Message" aria-label="Message"

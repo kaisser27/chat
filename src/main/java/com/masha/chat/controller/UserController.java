@@ -53,4 +53,13 @@ public class UserController {
         modelMap.put("user", userFromDb);
         return "user";
     }
+
+    @GetMapping("/users")
+    public String getUsers(ModelMap modelMap){
+        List<User> users = userService.getAll();
+        modelMap.put("users", users);
+
+        return "users";
+    }
+
 }
